@@ -1,0 +1,26 @@
+** About
+Repository contains /developer environments/ that I use to initialize various C/C++ projects in [[https://nixos.org][NixOS]] ecosystem.  
+
+** Overview
+Let's see how this template is structured to suit my workflow and needs. And what *you* can do integrate it with your own pipeline.
+
+*** Terminal
+[[https://fishshell.com/][Fish]] inside [[https://github.com/kovidgoyal/kitty][kitty]], and no i'm not talking about animals. I have [[https://direnv.net/][direnv]] hooked up to my fish shell, and every time i =cd= into a project directory containing .envrc, it automatically evaluates the ~flake.nix~ and injects LSP and all the environment variables into my =$PATH=. Install it from [[https://search.nixos.org/packages?channel=unstable&query=direnv][NUR]].
+
+*** Editor
+I use vanilla [[https://gnuemacs.org][Emacs]] as an IDE, it's what suits my preferences the most, but surely you can use anything with this template. My Emacs configuration can be found [[https://github.com/msftyago/nix][here]]. 
+
+I'm using eglot to connect to the LSP server ([[https://clangd.llvm.org/][clangd]]) via $PATH provided by [[https://melpa.org/#/envrc][envrc]] -- https://github.com/purcell/envrc/. Alternatively, you can run your IDE from the terminal in your project directory and get your env variables from there.
+
+#+begin_quote
+NOTICE: =flake.nix= contains a basic script to replace Make.
+#+end_quote
+
+** Requirements 
+1. Set up [[https://wiki.nixos.org/wiki/Flakes][flakes]].
+2. Install direnv and hook it up with your shell.
+3. clone this repository.
+4. =cd= into repo and =direnv allow=. 
+#+begin_quote
+NOTICE: you should always check unknown .envrc and make sure it doesn't contain malicious scripts
+#+end_quote
